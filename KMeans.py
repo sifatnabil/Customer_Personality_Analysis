@@ -14,7 +14,7 @@ class KMeans:
         self.data = None
         self.centers = None
         self.prev_centers = None
-        self.data_clusters = None
+        self.data_cluster = None
         self.distances = None
         self.distance_metric = distance_metric
         self.init = init
