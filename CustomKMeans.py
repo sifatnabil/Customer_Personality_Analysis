@@ -1,6 +1,6 @@
 import numpy as np
 
-class KMeans:
+class CustomKMeans:
 
     def __init__(
         self, n_centers=3, 

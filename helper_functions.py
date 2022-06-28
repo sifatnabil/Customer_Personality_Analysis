@@ -1,5 +1,6 @@
 import matplotlib
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 def plot_data(x, 
               centers=None, 
@@ -36,3 +37,30 @@ def plot_data(x,
             s=200,
             edgecolors="black",
         )
+
+def plot_cluster_3d(x, y, z, cluster_labels):
+    fig = plt.figure(figsize=(15, 15))
+    ax = plt.axes(projection="3d")
+    ax.scatter3D(x, y, z, c=cluster_labels, cmap="viridis")
+    ax.set_xlabel("PC1")
+    ax.set_ylabel("PC2")
+    ax.set_zlabel("PC3")
+    plt.show()
+
+def create_kdeplot(col, title, clus0, clus1, clus2):
+    plt.figure(figsize=(12,8))
+    # sns.kdeplot(data=outlier, x=col, label='Outliers')
+    sns.kdeplot(data=clus0, x=col, label ='Cluster 0')
+    sns.kdeplot(data=clus1, x=col, label ='Cluster 1')
+    sns.kdeplot(data=clus2, x=col, label ='Cluster 2')
+    plt.title(title)
+    plt.legend()
+    plt.show()
+    
+#Create function for plotting count of discrete values per cluster
+def create_barplot(col, title, data):
+    plt.figure(figsize=(8,8))
+    sns.countplot(x=data[col], hue=data["Cluster"])
+    plt.title(title)
+    plt.legend(['Outliers', 'Cluster 0', 'Cluster 1', 'Cluster 2'])
+    plt.show()
